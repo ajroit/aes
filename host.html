@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videollamada (Anfitrión) - Abogados en Salud</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="100" height="100">
+                <span class="logo-text">Abogados en Salud</span>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="amparos.html">Amparos</a></li>
+                    <li><a href="derechos.html">Derechos de los Usuarios</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menú móvil">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Sala de Consulta Virtual</h1>
+                    <p class="hero-description">Bienvenido al espacio de videollamada. Como anfitrión, podrá gestionar la consulta y los participantes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <div class="video-container">
+                    <div class="video-wrapper" id="jitsi-meet-container"></div>
+                    <div class="video-controls">
+                        <button class="btn btn-secondary" id="muteAudio">
+                            <i class="fas fa-microphone-slash"></i> Silenciar
+                        </button>
+                        <button class="btn btn-secondary" id="muteVideo">
+                            <i class="fas fa-video-slash"></i> Apagar cámara
+                        </button>
+                        <button class="btn btn-secondary" id="shareScreen">
+                            <i class="fas fa-desktop"></i> Compartir pantalla
+                        </button>
+                        <button class="btn btn-primary" id="endCall">
+                            <i class="fas fa-phone-slash"></i> Finalizar llamada
+                        </button>
+                    </div>
+                </div>
+                <div class="video-instructions">
+                    <h2>Instrucciones para el anfitrión</h2>
+                    <ol>
+                        <li>Asegúrese de tener una conexión estable a internet.</li>
+                        <li>Utilice auriculares para mejorar la calidad del audio.</li>
+                        <li>Puede silenciar a los participantes si es necesario.</li>
+                        <li>Comparta su pantalla para mostrar documentos relevantes.</li>
+                        <li>Finalice la llamada cuando la consulta haya terminado.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="80" height="80">
+                    <p>© 2024 Abogados en Salud. Todos los derechos reservados.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="amparos.html">Amparos</a></li>
+                        <li><a href="derechos.html">Derechos de los Usuarios</a></li>
+                        <li><a href="noticias.html">Noticias</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="chat-button-container">
+        <button id="chat-button" class="chat-button" aria-label="Abrir chat">
+            <i class="fas fa-comments"></i>
+        </button>
+    </div>
+    <div id="chat-container" class="chat-container">
+        <div id="chat-header" class="chat-header">
+            <span>Chat en vivo</span>
+            <button id="close-chat" class="close-chat" aria-label="Cerrar chat">×</button>
+        </div>
+        <div id="chat-content" class="chat-content"></div>
+        <div id="chat-input-container" class="chat-input-container">
+            <input id="chat-input" type="text" placeholder="Escribe un mensaje...">
+            <button id="send-chat" class="send-chat" aria-label="Enviar mensaje">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const domain = "meet.jit.si";
+        const options = {
+            roomName: "AbogadosEnSaludConsulta",
+            width: '100%',
+            height: '100%',
+            parentNode: document.querySelector('#jitsi-meet-container'),
+            interfaceConfigOverwrite: {
+                TOOLBAR_BUTTONS: [
+                    'microphone', 'camera', 'closedcaptions', 'desktop', 'fullscreen',
+                    'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
+                    'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
+                    'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts',
+                    'tileview', 'videobackgroundblur', 'download', 'help', 'mute-everyone',
+                    'e2ee', 'security'
+                ],
+            },
+            configOverwrite: {
+                startWithAudioMuted: false,
+                startWithVideoMuted: false,
+                prejoinPageEnabled: false
+            },
+            userInfo: {
+                displayName: 'Anfitrión'
+            }
+        };
+        const api = new JitsiMeetExternalAPI(domain, options);
+
+        // Controles personalizados
+        document.getElementById('muteAudio').addEventListener('click', () => api.executeCommand('toggleAudio'));
+        document.getElementById('muteVideo').addEventListener('click', () => api.executeCommand('toggleVideo'));
+        document.getElementById('shareScreen').addEventListener('click', () => api.executeCommand('toggleShareScreen'));
+        document.getElementById('endCall').addEventListener('click', () => api.executeCommand('hangup'));
+
+        // Establecer el rol de moderador para el anfitrión
+        api.executeCommand('setRole', 'moderator');
+
+        // Habilitar la sala de espera
+        api.executeCommand('toggleLobby', true);
+    });
+    </script>
+</body>
+</html>

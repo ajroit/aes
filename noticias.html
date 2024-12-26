@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <header class="header">
@@ -43,8 +43,15 @@
         <section class="content">
             <div class="container">
                 <div id="blog-container" class="blog-container">
-                    <!-- Las entradas del blog se generarán aquí dinámicamente -->
-                </div>
+                    <article class="blog-post">
+                        <img src="assets/blog1.jpg" alt="Novedades en la Cobertura de Medicamentos Oncológicos" class="blog-image">
+                        <h2 class="blog-title">Novedades en la Cobertura de Medicamentos Oncológicos</h2>
+                        <div class="blog-meta">
+                            <span class="blog-author">Por: Dr. Juan Pérez</span>
+                            <span class="blog-date">Fecha: 2024-07-26</span>
+                        </div>
+                        <p class="blog-content">Recientemente, ha habido cambios importantes en la regulación de la cobertura de medicamentos oncológicos de alto costo. Conoce cómo estos cambios pueden impactar tus derechos y cómo podemos ayudarte a obtener el tratamiento que necesitas.</p>
+                    </article>
             </div>
         </section>
     </main>
@@ -86,7 +93,7 @@
     <div id="chat-container" class="chat-container">
         <div id="chat-header" class="chat-header">
             <span>Chat en vivo</span>
-            <button id="close-chat" class="close-chat" aria-label="Cerrar chat">&times;</button>
+            <button id="close-chat" class="close-chat" aria-label="Cerrar chat">×</button>
         </div>
         <div id="chat-content" class="chat-content"></div>
         <div id="chat-input-container" class="chat-input-container">
@@ -168,8 +175,10 @@
 
             blogContainer.appendChild(postElement);
         });
+
+        // Store the blog posts in a data attribute of the body
+        document.body.setAttribute('data-blog-posts', JSON.stringify(blogPosts));
     });
     </script>
 </body>
 </html>
-
