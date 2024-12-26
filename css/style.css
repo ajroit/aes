@@ -274,8 +274,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0.5rem 0; /* padding reducido*/
 }
+
 
 .logo {
     display: flex;
@@ -363,14 +364,16 @@ body {
 .hero-image {
     flex: 1;
     text-align: right;
+    max-width: 40%; /* Ajustar el tamaño del contenedor */
 }
 
 .hero-img {
-    max-width: 100%;
-    height: auto;
+    max-width: 100%; /* Ajustar al ancho del contenedor */
+    height: auto; /* Mantener la proporción */
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+
 
 /* Services Section Styles */
 .services {
@@ -718,12 +721,20 @@ body {
         text-align: center;
     }
 
+    .hero-image {
+        text-align: center;
+        max-width: 100%; /* Ajustar el ancho del contenedor para dispositivos móviles */
+        margin-bottom: 20px; /* Añadir margen inferior al CONTENEDOR */
+    }
     .hero-img {
-        max-width: 60%; /* Adjust as needed to fit your layout */
+        max-width: 60%; /* Ajustar el ancho de la imagen dentro del contenedor*/
         height: auto;
         border-radius: 10px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        /* margin-bottom: 20px;  Eliminar el margen de la imagen*/
     }
+
+}
 
     .footer-content {
         flex-direction: column;
@@ -772,7 +783,7 @@ body {
 .page-header {
     background-color: var(--primary-color);
     color: var(--light-text-color);
-    padding: 80px 0 40px;
+    padding: 100px 0 50px; /* Aumentar el espacio superior */
     text-align: center;
 }
 
