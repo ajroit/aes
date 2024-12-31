@@ -21,8 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         id: post.id,
                         title: post.title,
                         content: post.content,
-                        author: post.author,
-                        date: post.date,
+                         date: post.date,
                         imageUrl: post.imageUrl
                     }));
              document.body.setAttribute('data-blog-posts', JSON.stringify(newsData));
@@ -50,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="${post.imageUrl}" alt="${post.title}" class="blog-image">
                     <h3 class="blog-title">${post.title}</h3>
                     <div class="blog-meta">
-                        <span class="blog-author">Por: ${post.author}</span>
                         <span class="blog-date">Fecha: ${post.date}</span>
                     </div>
                     <p class="blog-content">${post.content.substring(0, 200) + '...'}</p>

@@ -46,7 +46,6 @@
                 <article class="blog-post full-post">
                     <img id="news-image" src="" alt="Imagen de la Noticia" class="blog-image">
                     <div class="blog-meta">
-                        <span id="news-author" class="blog-author"></span>
                         <span id="news-date" class="blog-date"></span>
                     </div>
                     <div id="news-content" class="blog-content">
@@ -130,7 +129,6 @@
                      }
                       document.getElementById('news-title').textContent = data.title;
                      document.getElementById('news-subtitle').textContent = data.content.substring(0,100) + '...';
-                     document.getElementById('news-author').textContent = 'Por: ' + data.author;
                      document.getElementById('news-date').textContent = 'Fecha: ' + data.date;
                      document.getElementById('news-image').src = data.imageUrl;
                      document.getElementById('news-image').alt = data.title;
