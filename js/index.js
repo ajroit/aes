@@ -1,30 +1,37 @@
+// js/index.js
+const SUPABASE_URL = 'https://kiryiazblpcxflckkcmz.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpcnlpYXpibHBjeGZsY2trY216Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM5MjUzNzQsImV4cCI6MjA0OTUwMTM3NH0.kAuGhhAi2pHfuYBdPSug4HqfQftSSD0QYMqTbU0s0Gg';
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 document.addEventListener('DOMContentLoaded', function() {
     // ... (código existente para animaciones)
 
-    // Función para cargar las noticias
-    function loadNews() {
-        fetch('noticias.html')
-            .then(response => response.text())
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const blogPosts = Array.from(doc.querySelectorAll('.blog-post')).slice(0, 5);
-                
-                const newsData = blogPosts.map(post => ({
-                    title: post.querySelector('.blog-title').textContent,
-                    content: post.querySelector('.blog-content').textContent,
-                    author: post.querySelector('.blog-author').textContent.replace('Por: ', ''),
-                    date: post.querySelector('.blog-date').textContent.replace('Fecha: ', ''),
-                    imageUrl: post.querySelector('.blog-image').src
-                }));
+      async function loadNews() {
+             const { data, error } = await supabase
+                     .from('news')
+                     .select('*')
+                    .order('created_at', { ascending: false })
+                    .limit(5);
+             if (error) {
+                   console.error("Error fetching data", error);
+                   return [];
+                 }
 
-                initializeCarousel(newsData);
-            })
-            .catch(error => console.error('Error al cargar las noticias:', error));
+               const newsData = data.map(post => ({
+                        id: post.id,
+                        title: post.title,
+                        content: post.content,
+                        author: post.author,
+                        date: post.date,
+                        imageUrl: post.imageUrl
+                    }));
+             document.body.setAttribute('data-blog-posts', JSON.stringify(newsData));
+           initializeCarousel(newsData);
+
     }
 
     // Función para inicializar el carrusel
-    function initializeCarousel(newsData) {
+   function initializeCarousel(newsData) {
         const slider = document.querySelector('.testimonial-slider');
         const prevButton = document.querySelector('.carousel-control.prev');
         const nextButton = document.querySelector('.carousel-control.next');
@@ -46,7 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="blog-author">Por: ${post.author}</span>
                         <span class="blog-date">Fecha: ${post.date}</span>
                     </div>
-                    <p class="blog-content">${post.content}</p>
+                    <p class="blog-content">${post.content.substring(0, 200) + '...'}</p>
+                      <a href="noticia-${post.id}.html" class="read-more btn btn-primary">Leer más</a>
                 `;
                 
                 slider.appendChild(postElement);
@@ -84,4 +92,3 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cargar las noticias al iniciar la página
     loadNews();
 });
-

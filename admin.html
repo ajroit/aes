@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abogados en Salud - Expertos en Derecho de la Salud</title>
+    <title>Panel de Administración - Abogados en Salud</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <script src="js/index.js"></script>
+    <script src="https://cdn.supabase.com/supabase-js-v2.3.0/dist/supabase.min.js"></script>
 </head>
 <body>
     <header class="header">
@@ -19,10 +19,9 @@
             </a>
             <nav class="main-nav">
                 <ul class="nav-list">
-                    <li><a href="amparos.html">Amparos</a></li>
-                    <li><a href="servicios.html">Servicios</a></li>
+                     <li><a href="amparos.html">Amparos</a></li>
                     <li><a href="derechos.html">Derechos de los Usuarios</a></li>
-                      <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
@@ -35,71 +34,47 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section class="page-header">
             <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title">Defendemos tus Derechos en Salud</h1>
-                    <p class="hero-description">En Abogados en Salud, somos expertos en derecho de la salud. Nos dedicamos a proteger tus derechos y brindarte la mejor asesoría legal.</p>
-                    <a href="contacto.html" class="btn btn-primary">Contáctanos Ahora</a>
-                </div>
-                <div class="hero-image">
-                    <img src="IMG/nombre.jpeg" alt="Abogados en acción" class="hero-img">
+                <h1>Panel de Administración</h1>
+                <p>Gestiona las noticias de tu sitio</p>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container">
+                <form id="news-form" class="contact-form">
+                    <h2>Nueva Noticia</h2>
+                    <div class="form-group">
+                        <label for="title">Título:</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Autor:</label>
+                        <input type="text" id="author" name="author" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="date">Fecha:</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageUrl">URL de la Imagen:</label>
+                        <input type="text" id="imageUrl" name="imageUrl" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Contenido:</label>
+                        <textarea id="content" name="content" rows="8" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Noticia</button>
+                    <div id="form-message" class="form-message" style="display: none;"></div>
+                </form>
+              <div id="news-list" class="news-list">
                 </div>
             </div>
         </section>
-
-        <section class="services">
-            <div class="container">
-                <h2 class="section-title">Nuestros Servicios</h2>
-                <div class="service-grid">
-                    <div class="service-item">
-                        <i class="fas fa-gavel service-icon"></i>
-                        <h3 class="service-title">Amparos</h3>
-                        <p class="service-description">Acciones legales para proteger tus derechos de salud de manera rápida y efectiva.</p>
-                        <a href="amparos.html" class="btn btn-secondary">Más Información</a>
-                    </div>
-                    <div class="service-item">
-                        <i class="fas fa-book-open service-icon"></i>
-                        <h3 class="service-title">Derechos de los Usuarios</h3>
-                        <p class="service-description">Información, legislación y jurisprudencia sobre tus derechos en salud.</p>
-                        <a href="derechos.html" class="btn btn-secondary">Explorar</a>
-                    </div>
-                    <div class="service-item">
-                        <i class="fas fa-newspaper service-icon"></i>
-                        <h3 class="service-title">Publicaciones y Noticias</h3>
-                        <p class="service-description">Artículos relevantes y actualizaciones en el campo del derecho de la salud.</p>
-                        <a href="noticias.html" class="btn btn-secondary">Leer Más</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta">
-            <div class="container">
-                <h2 class="cta-title">¿Necesitas ayuda legal en salud?</h2>
-                <p class="cta-description">Nuestro equipo de expertos está listo para asesorarte.</p>
-                <a href="contacto.html" class="btn btn-primary">Solicita una Consulta Gratuita</a>
-            </div>
-        </section>
-
-        <section class="testimonials">
-            <div class="container">
-                <h2 class="section-title">Últimas noticias</h2>
-                <div class="testimonial-slider">
-                    <!-- Las noticias se cargarán aquí dinámicamente -->
-                </div>
-                <button class="carousel-control prev" aria-label="Noticia anterior">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-control next" aria-label="Siguiente noticia">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-    </section>
     </main>
 
     <footer class="footer">
-        <div class="container">
+          <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
                     <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="80" height="80">
@@ -110,7 +85,7 @@
                     <ul>
                         <li><a href="amparos.html">Amparos</a></li>
                         <li><a href="derechos.html">Derechos de los Usuarios</a></li>
-                        <li><a href="noticias.html">Noticias</a></li>
+                        <li><a href="noticias.html">Publicaciones</a></li>
                         <li><a href="contacto.html">Contacto</a></li>
                     </ul>
                 </div>
@@ -126,15 +101,16 @@
         </div>
     </footer>
 
-    <div class="chat-button-container">
+     <div class="chat-button-container">
         <button id="chat-button" class="chat-button" aria-label="Abrir chat">
             <i class="fas fa-comments"></i>
+            <span class="chat-button-text">Chat en vivo</span>
         </button>
-        </div>
+    </div>
     <div id="chat-container" class="chat-container">
         <div id="chat-header" class="chat-header">
             <span>Chat en vivo</span>
-            <button id="close-chat" class="close-chat" aria-label="Cerrar chat">&times;</button>
+            <button id="close-chat" class="close-chat" aria-label="Cerrar chat">×</button>
         </div>
         <div id="chat-content" class="chat-content"></div>
         <div id="chat-input-container" class="chat-input-container">
@@ -145,6 +121,7 @@
         </div>
     </div>
 
+    <script src="js/admin.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

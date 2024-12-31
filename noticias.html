@@ -19,8 +19,9 @@
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li><a href="amparos.html">Amparos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
                     <li><a href="derechos.html">Derechos de los Usuarios</a></li>
-                    <li><a href="noticias.html" class="active">Noticias</a></li>
+                      <li><a href="noticias.html">Noticias</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
@@ -43,21 +44,14 @@
         <section class="content">
             <div class="container">
                 <div id="blog-container" class="blog-container">
-                    <article class="blog-post">
-                        <img src="assets/blog1.jpg" alt="Novedades en la Cobertura de Medicamentos Oncológicos" class="blog-image">
-                        <h2 class="blog-title">Novedades en la Cobertura de Medicamentos Oncológicos</h2>
-                        <div class="blog-meta">
-                            <span class="blog-author">Por: Dr. Juan Pérez</span>
-                            <span class="blog-date">Fecha: 2024-07-26</span>
-                        </div>
-                        <p class="blog-content">Recientemente, ha habido cambios importantes en la regulación de la cobertura de medicamentos oncológicos de alto costo. Conoce cómo estos cambios pueden impactar tus derechos y cómo podemos ayudarte a obtener el tratamiento que necesitas.</p>
-                    </article>
+                    <!-- Aquí se insertarán dinámicamente las noticias -->
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="container">
+         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
                     <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="80" height="80">
@@ -106,79 +100,53 @@
 
     <script src="js/script.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const blogContainer = document.getElementById('blog-container');
-
-        const blogPosts = [
-            {
-                title: 'Novedades en la Cobertura de Medicamentos Oncológicos',
-                date: '2024-07-26',
-                author: 'Dr. Juan Pérez',
-                content: 'Recientemente, ha habido cambios importantes en la regulación de la cobertura de medicamentos oncológicos de alto costo. Conoce cómo estos cambios pueden impactar tus derechos y cómo podemos ayudarte a obtener el tratamiento que necesitas.',
-                imageUrl: 'assets/blog1.jpg'
-            },
-            {
-                title: '¿Cómo defender tus derechos ante la negativa de una prepaga?',
-                date: '2024-07-15',
-                author: 'Dra. Ana López',
-                content: 'Si tu prepaga ha denegado la cobertura de un tratamiento o medicamento esencial, es crucial saber qué pasos tomar. Te explicamos cómo defender tus derechos y obtener la atención médica que te corresponde.',
-                imageUrl: 'assets/blog2.jpg'
-            },
-            {
-                title: 'La importancia de la Internación Domiciliaria',
-                date: '2024-06-20',
-                author: 'Lic. María García',
-                content: 'La internación domiciliaria permite a los pacientes recuperar su salud en un ambiente familiar. Conoce las últimas reformas que protegen este derecho.',
-                imageUrl: 'assets/blog3.jpg'
-            },
-        ];
-
-        blogPosts.forEach(post => {
-            const postElement = document.createElement('article');
-            postElement.classList.add('blog-post');
-
-            const imageElement = document.createElement('img');
-            imageElement.src = post.imageUrl;
-            imageElement.alt = post.title;
-            imageElement.classList.add('blog-image');
-
-            const contentWrapper = document.createElement('div');
-            contentWrapper.classList.add('blog-content-wrapper');
-
-            const titleElement = document.createElement('h2');
-            titleElement.textContent = post.title;
-            titleElement.classList.add('blog-title');
-
-            const metaElement = document.createElement('div');
-            metaElement.classList.add('blog-meta');
-            metaElement.innerHTML = `
-                <span class="blog-author">Por: ${post.author}</span>
-                <span class="blog-date">Fecha: ${post.date}</span>
-            `;
-
-            const contentElement = document.createElement('p');
-            contentElement.classList.add('blog-content');
-            contentElement.textContent = post.content;
-
-            const readMoreLink = document.createElement('a');
-            readMoreLink.href = '#';
-            readMoreLink.classList.add('read-more', 'btn', 'btn-primary');
-            readMoreLink.textContent = 'Leer más';
-
-            contentWrapper.appendChild(titleElement);
-            contentWrapper.appendChild(metaElement);
-            contentWrapper.appendChild(contentElement);
-            contentWrapper.appendChild(readMoreLink);
-
-            postElement.appendChild(imageElement);
-            postElement.appendChild(contentWrapper);
-
-            blogContainer.appendChild(postElement);
+        document.addEventListener('DOMContentLoaded', function () {
+            const blogContainer = document.getElementById('blog-container');
+            const blogPosts = JSON.parse(document.body.getAttribute('data-blog-posts'));
+    
+            blogPosts.forEach(post => {
+                const postElement = document.createElement('article');
+                postElement.classList.add('blog-post');
+    
+                const imageElement = document.createElement('img');
+                imageElement.src = post.imageUrl;
+                imageElement.alt = post.title;
+                imageElement.classList.add('blog-image');
+    
+                const contentWrapper = document.createElement('div');
+                contentWrapper.classList.add('blog-content-wrapper');
+    
+                const titleElement = document.createElement('h2');
+                titleElement.textContent = post.title;
+                titleElement.classList.add('blog-title');
+    
+                const metaElement = document.createElement('div');
+                metaElement.classList.add('blog-meta');
+                metaElement.innerHTML = `
+                    <span class="blog-author">Por: ${post.author}</span>
+                    <span class="blog-date">Fecha: ${post.date}</span>
+                `;
+    
+                const contentElement = document.createElement('p');
+                contentElement.classList.add('blog-content');
+                 contentElement.textContent = post.content.substring(0, 200) + '...';
+    
+                const readMoreLink = document.createElement('a');
+                 readMoreLink.href = `noticia-${post.id}.html`; // Genera el enlace dinámicamente
+                readMoreLink.classList.add('read-more', 'btn', 'btn-primary');
+                readMoreLink.textContent = 'Leer más';
+    
+                contentWrapper.appendChild(titleElement);
+                contentWrapper.appendChild(metaElement);
+                contentWrapper.appendChild(contentElement);
+                contentWrapper.appendChild(readMoreLink);
+    
+                postElement.appendChild(imageElement);
+                postElement.appendChild(contentWrapper);
+    
+                blogContainer.appendChild(postElement);
+            });
         });
-
-        // Store the blog posts in a data attribute of the body
-        document.body.setAttribute('data-blog-posts', JSON.stringify(blogPosts));
-    });
-    </script>
+        </script>
 </body>
 </html>

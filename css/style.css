@@ -1156,3 +1156,127 @@ body {
     }
 }
 
+/* Existing styles ... */
+
+/* Styles for Contact Page */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.chat-container-contact {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-container-contact .chat-header{
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+}
+
+
+.chat-input-container-contact input{
+    flex: 1; /* Allow input to grow */
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+
+.contact-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: var(--font-family);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.social-links-container {
+    display: flex;
+    justify-content: center; /* Center icons horizontally */
+    align-items: center;
+    gap: 20px; /* Space between icons */
+    padding: 20px 0; /* Add some padding around */
+}
+
+.social-links-container a {
+    font-size: 2rem; /* Increase size of icons */
+    color: var(--grey-color); /* Color for icons */
+    text-decoration: none; /* Remove underline from links */
+    transition: color 0.3s ease;
+}
+
+.social-links-container a:hover {
+     color: var(--accent-color);
+}
+
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stack on mobile */
+    }
+     .chat-container-contact{
+       margin-bottom: 20px;
+    }
+     .social-links-container {
+       padding: 20px 0; /* Add some padding around */
+    }
+
+}

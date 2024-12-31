@@ -10,33 +10,32 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
-       <script>
-    (function() {
-        emailjs.init('yTeBiln5ZzwAtU-n3'); // Reemplaza con tu Public Key
-    })();
+        (function() {
+            emailjs.init('yTeBiln5ZzwAtU-n3'); // Reemplaza con tu Public Key
+        })();
 
-     document.addEventListener('DOMContentLoaded', function() {
-         const form = document.getElementById('contact-form');
-         form.addEventListener('submit', function(event) {
-           event.preventDefault(); // Evita que el formulario se envíe de forma normal
-     
-           const templateParams = {
-                name: 'Test User',
-                email: 'test@example.com',
-                phone: '1234567890',
-                message: 'This is a test message'
-             };
-     
-             emailjs.send('service_pqfm8mh', 'template_mvnwmlf', templateParams)
-              .then(function(response) {
-               console.log('SUCCESS!', response.status, response.text);
-               alert('Email sent successfully!');
-               }, function(error) {
-               console.error('FAILED...', error);
-               alert('Email failed to send.');
-               });
-           });
-     });
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Evita que el formulario se envíe de forma normal
+
+                const templateParams = {
+                    name: 'Test User',
+                    email: 'test@example.com',
+                    phone: '1234567890',
+                    message: 'This is a test message'
+                };
+
+                emailjs.send('service_pqfm8mh', 'template_mvnwmlf', templateParams)
+                    .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        alert('Email sent successfully!');
+                    }, function(error) {
+                        console.error('FAILED...', error);
+                        alert('Email failed to send.');
+                    });
+            });
+        });
     </script>
 </head>
 <body>
@@ -49,9 +48,10 @@
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li><a href="amparos.html">Amparos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
                     <li><a href="derechos.html">Derechos de los Usuarios</a></li>
-                    <li><a href="noticias.html">Noticias</a></li>
-                    <li><a href="contacto.html" class="active">Contacto</a></li>
+                      <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
             <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menú móvil">
@@ -73,32 +73,18 @@
         <section class="content">
             <div class="container">
                 <div class="contact-grid">
-                    <div class="contact-info">
-                        <h2>Información de Contacto</h2>
-                        <ul class="contact-list">
-                            <li>
-                                <i class="fas fa-map-marker-alt"></i>
-                                <strong>Dirección:</strong> Av. Corrientes 1234, Ciudad Autónoma de Buenos Aires
-                            </li>
-                            <li>
-                                <i class="fas fa-phone"></i>
-                                <strong>Teléfono:</strong> <a href="tel:+5491112345678">+54 9 11 1234-5678</a>
-                            </li>
-                            <li>
-                                <i class="fas fa-envelope"></i>
-                                <strong>Email:</strong> <a href="mailto:info@abogadosensalud.com">info@abogadosensalud.com</a>
-                            </li>
-                            <li>
-                                <i class="fas fa-clock"></i>
-                                <strong>Horarios:</strong> Lunes a Viernes, de 9:00 a 18:00
-                            </li>
-                        </ul>
-
-                        <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.058701386401!2d-58.39383122443199!3d-34.60484977306699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac59565070b%3A0x261e91ab6e574450!2sAv.%20Corrientes%201234%2C%20C1043AAV%20CABA!5e0!3m2!1ses!2sar!4v1718685623904!5m2!1ses!2sar" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                     <div class="chat-container-contact" >
+                        <div id="chat-header-contact" class="chat-header">
+                            <span>Chat en vivo</span>
+                        </div>
+                        <div id="chat-content-contact" class="chat-content" style="flex: 1; overflow-y: auto; max-height: 300px;"></div>
+                        <div id="chat-input-container-contact" class="chat-input-container" style="display: flex;">
+                            <input id="chat-input-contact" type="text" placeholder="Escribe un mensaje..." style="flex: 1;">
+                            <button id="send-chat-contact" class="send-chat" aria-label="Enviar mensaje">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
                         </div>
                     </div>
-
                     <div class="contact-form">
                         <h2>Envíanos un Mensaje</h2>
                         <form id="contact-form">
@@ -125,6 +111,13 @@
                         <div id="form-message" class="form-message" style="display: none;"></div>
                     </div>
                 </div>
+                    <div class="social-links-container">
+                           <a href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                         <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                         <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                         <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                           <a href="mailto:info@abogadosensalud.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                     </div>
             </div>
         </section>
     </main>
@@ -156,8 +149,7 @@
             </div>
         </div>
     </footer>
-
-  <div class="chat-button-container">
+    <div class="chat-button-container">
         <button id="chat-button" class="chat-button" aria-label="Abrir chat">
             <i class="fas fa-comments"></i>
             <span class="chat-button-text">Chat en vivo</span>
@@ -168,37 +160,36 @@
             <span>Chat en vivo</span>
             <button id="close-chat" class="close-chat" aria-label="Cerrar chat">×</button>
         </div>
-        <div id="chat-content" class="chat-content"></div>
+        <div id="chat-content-float" class="chat-content"></div>
         <div id="chat-input-container" class="chat-input-container">
-            <input id="chat-input" type="text" placeholder="Escribe un mensaje...">
-            <button id="send-chat" class="send-chat" aria-label="Enviar mensaje">
+            <input id="chat-input-float" type="text" placeholder="Escribe un mensaje...">
+            <button id="send-chat-float" class="send-chat" aria-label="Enviar mensaje">
                 <i class="fas fa-paper-plane"></i>
             </button>
         </div>
     </div>
-
     <script src="js/script.js"></script>
     <script>
         const form = document.getElementById('contact-form');
         const formMessage = document.getElementById('form-message');
-  
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-  
+
             const formData = new FormData(form);
-  
+
             const name = formData.get('name');
             const email = formData.get('email');
             const phone = formData.get('phone');
             const message = formData.get('message');
-  
+
             const templateParams = {
                 name: name,
                 email: email,
                 phone: phone,
                 message: message,
             };
-  
+
             try {
                 const result = await emailjs.send('service_pqfm8mh', 'template_mvnwmlf', templateParams);
                 formMessage.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto a la brevedad.';
@@ -212,6 +203,68 @@
                 console.error('Error al enviar el mensaje:', error);
             }
         });
-      </script>
-  </body>
-  </html>
+
+
+       document.addEventListener('DOMContentLoaded', () => {
+            const chatContentContact = document.getElementById('chat-content-contact');
+            const chatInputContact = document.getElementById('chat-input-contact');
+            const sendChatContact = document.getElementById('send-chat-contact');
+            let sessionId = localStorage.getItem('chatSessionId') || null;
+
+            if(!sessionId){
+                sessionId = crypto.randomUUID();
+                localStorage.setItem('chatSessionId', sessionId)
+            }
+            function updateChat(message, isBot = false) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('chat-message');
+                 messageElement.innerHTML = message;
+                if (isBot) {
+                    messageElement.classList.add('bot');
+                } else {
+                    messageElement.classList.add('tú');
+                }
+                chatContentContact.appendChild(messageElement);
+                chatContentContact.scrollTop = chatContentContact.scrollHeight;
+            }
+            async function sendMessage() {
+                const message = chatInputContact.value.trim();
+                if (message) {
+                    updateChat(message);
+                    chatInputContact.value = '';
+                    try {
+                        const backendURL = 'https://chatbotpage.ajroit-wa.workers.dev/';
+                        const response = await fetch(backendURL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'x-session-id': sessionId,
+                            },
+                            body: JSON.stringify({ message: message }),
+                        });
+                        if (!response.ok) {
+                             const errorData = await response.json();
+                            console.error('Error del servidor:', errorData);
+                            throw new Error(`Error en la solicitud al servidor: ${response.status} - ${errorData.error}`);
+                       }
+                        const responseData = await response.json();
+                        updateChat(responseData.botResponse, true);
+                    } catch (error) {
+                        console.error('Error al enviar el mensaje:', error);
+                         updateChat('Hubo un error al procesar tu mensaje. Por favor, intenta de nuevo.', true);
+                    }
+                }
+             }
+
+             sendChatContact.addEventListener('click', sendMessage);
+
+           chatInputContact.addEventListener('keypress', (e) => {
+                 if (e.key === 'Enter') {
+                    sendMessage();
+               }
+           });
+         });
+
+    </script>
+</body>
+</html>
