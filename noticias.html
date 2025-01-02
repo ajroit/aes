@@ -99,76 +99,79 @@
     </div>
 
     <script src="js/script.js"></script>
-    <script>
-        const SUPABASE_URL = 'https://kiryiazblpcxflckkcmz.supabase.co';
-       const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpcnlpYXpibHBjeGZsY2trY216Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM5MjUzNzQsImV4cCI6MjA0OTUwMTM3NH0.kAuGhhAi2pHfuYBdPSug4HqfQftSSD0QYMqTbU0s0Gg';
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        document.addEventListener('DOMContentLoaded', function () {
-            const blogContainer = document.getElementById('blog-container');
-           async function loadNews() {
-                const { data, error } = await supabase
-                        .from('news')
-                        .select('*')
-                          .order('created_at', { ascending: false });
-                if (error) {
-                      console.error("Error fetching data", error);
-                      return [];
-                    }
+     <script type="module">
+         import { createClient } from './js/lib/supabase-esm.js';
+         const SUPABASE_URL = 'https://kiryiazblpcxflckkcmz.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpcnlpYXpibHBjeGZsY2trY216Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM5MjUzNzQsImV4cCI6MjA0OTUwMTM3NH0.kAuGhhAi2pHfuYBdPSug4HqfQftSSD0QYMqTbU0s0Gg';
+         let supabase;
+         document.addEventListener('DOMContentLoaded', function () {
+              supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+             const blogContainer = document.getElementById('blog-container');
+            async function loadNews() {
+                 const { data, error } = await supabase
+                         .from('news')
+                         .select('*')
+                           .order('created_at', { ascending: false });
+                 if (error) {
+                       console.error("Error fetching data", error);
+                       return [];
+                     }
 
-                  const newsData = data.map(post => ({
-                           id: post.id,
-                           title: post.title,
-                           content: post.content,
-                            date: post.date,
-                           imageUrl: post.imageUrl
-                       }));
+                   const newsData = data.map(post => ({
+                            id: post.id,
+                            title: post.title,
+                            content: post.content,
+                             date: post.date,
+                            imageUrl: post.imageUrl
+                        }));
 
-                newsData.forEach(post => {
-                    const postElement = document.createElement('article');
-                    postElement.classList.add('blog-post');
+                 newsData.forEach(post => {
+                     const postElement = document.createElement('article');
+                     postElement.classList.add('blog-post');
 
-                   const imageElement = document.createElement('img');
-                    imageElement.src = post.imageUrl;
-                     imageElement.alt = post.title;
-                     imageElement.classList.add('blog-image');
+                    const imageElement = document.createElement('img');
+                     imageElement.src = post.imageUrl;
+                      imageElement.alt = post.title;
+                      imageElement.classList.add('blog-image');
 
-                     const contentWrapper = document.createElement('div');
-                     contentWrapper.classList.add('blog-content-wrapper');
+                      const contentWrapper = document.createElement('div');
+                      contentWrapper.classList.add('blog-content-wrapper');
 
-                    const titleElement = document.createElement('h2');
-                     titleElement.textContent = post.title;
-                      titleElement.classList.add('blog-title');
+                     const titleElement = document.createElement('h2');
+                      titleElement.textContent = post.title;
+                       titleElement.classList.add('blog-title');
 
-                     const metaElement = document.createElement('div');
-                     metaElement.classList.add('blog-meta');
-                       metaElement.innerHTML = `
+                      const metaElement = document.createElement('div');
+                      metaElement.classList.add('blog-meta');
+                        metaElement.innerHTML = `
 
-                       <span class="blog-date">Fecha: ${post.date}</span>
-                       `;
+                        <span class="blog-date">Fecha: ${post.date}</span>
+                        `;
 
-                       const contentElement = document.createElement('p');
-                        contentElement.classList.add('blog-content');
-                        contentElement.textContent = post.content.substring(0, 200) + '...';
+                        const contentElement = document.createElement('p');
+                         contentElement.classList.add('blog-content');
+                         contentElement.textContent = post.content.substring(0, 200) + '...';
 
 
-                      const readMoreLink = document.createElement('a');
-                      readMoreLink.href = `noticia-${post.id}.html?id=${post.id}`;
-                      readMoreLink.classList.add('read-more', 'btn', 'btn-primary');
-                      readMoreLink.textContent = 'Leer más';
+                       const readMoreLink = document.createElement('a');
+                       readMoreLink.href = `noticia-${post.id}.html?id=${post.id}`;
+                       readMoreLink.classList.add('read-more', 'btn', 'btn-primary');
+                       readMoreLink.textContent = 'Leer más';
 
-                        contentWrapper.appendChild(titleElement);
-                       contentWrapper.appendChild(metaElement);
-                       contentWrapper.appendChild(contentElement);
-                        contentWrapper.appendChild(readMoreLink);
+                         contentWrapper.appendChild(titleElement);
+                        contentWrapper.appendChild(metaElement);
+                        contentWrapper.appendChild(contentElement);
+                         contentWrapper.appendChild(readMoreLink);
 
-                       postElement.appendChild(imageElement);
-                        postElement.appendChild(contentWrapper);
+                        postElement.appendChild(imageElement);
+                         postElement.appendChild(contentWrapper);
 
-                    blogContainer.appendChild(postElement);
-                });
-            }
-            loadNews()
-        });
-       </script>
+                     blogContainer.appendChild(postElement);
+                 });
+             }
+             loadNews()
+         });
+        </script>
+
 </body>
 </html>
