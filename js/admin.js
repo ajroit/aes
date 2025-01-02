@@ -1,6 +1,6 @@
 // admin/admin.js
 
-import { createClient } from '../js/lib/supabase-esm.js';
+import { createClient } from 'js/lib/supabase-esm.js';
 
 const SUPABASE_URL = 'https://kiryiazblpcxflckkcmz.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpcnlpYXpibHBjeGZsY2trY216Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM5MjUzNzQsImV4cCI6MjA0OTUwMTM3NH0.kAuGhhAi2pHfuYBdPSug4HqfQftSSD0QYMqTbU0s0Gg';
