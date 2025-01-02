@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración - Abogados en Salud</title>
+    <title>Administrador de Noticias</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="IMG/nombre.jpeg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.supabase.com/supabase-js-v2.3.0/dist/supabase.min.js"></script>
 </head>
 <body>
     <header class="header">
-        <div class="container">
+      <div class="container">
             <a href="index.html" class="logo">
                 <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="100" height="100">
                 <span class="logo-text">Abogados en Salud</span>
             </a>
             <nav class="main-nav">
                 <ul class="nav-list">
-                     <li><a href="amparos.html">Amparos</a></li>
+                    <li><a href="amparos.html">Amparos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
                     <li><a href="derechos.html">Derechos de los Usuarios</a></li>
-                    <li><a href="noticias.html">Noticias</a></li>
+                      <li><a href="noticias.html">Noticias</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
@@ -34,47 +34,47 @@
     </header>
 
     <main>
-        <section class="page-header">
+         <section class="page-header">
             <div class="container">
-                <h1>Panel de Administración</h1>
-                <p>Gestiona las noticias de tu sitio</p>
+                <h1>Administrador de Noticias</h1>
+                <p>Carga y gestiona las noticias de tu sitio web</p>
             </div>
         </section>
-        <section class="content">
-            <div class="container">
-                <form id="news-form" class="contact-form">
-                    <h2>Nueva Noticia</h2>
-                    <div class="form-group">
-                        <label for="title">Título:</label>
-                        <input type="text" id="title" name="title" required>
-                    </div>
-                     <div class="form-group">
-                        <label for="date">Fecha:</label>
-                        <input type="date" id="date" name="date" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="imageUrl">URL de la Imagen:</label>
-                        <input type="text" id="imageUrl" name="imageUrl" required>
-                    </div>
-                     <div class="form-group">
-                        <label for="tags">Tags (separados por comas):</label>
-                         <input type="text" id="tags" name="tags">
-                     </div>
-                    <div class="form-group">
-                        <label for="content">Contenido:</label>
-                        <textarea id="content" name="content" rows="8" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Guardar Noticia</button>
-                    <div id="form-message" class="form-message" style="display: none;"></div>
-                </form>
-              <div id="news-list" class="news-list">
+        <div class="container">
+
+            <section class="content">
+                   <form id="news-form" class="contact-form">
+                      <h2>Cargar Nueva Noticia</h2>
+                      <div class="form-group">
+                          <label for="title">Título:</label>
+                          <input type="text" id="title" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="content">Contenido:</label>
+                          <textarea id="content" rows="5" required></textarea>
+                      </div>
+                       <div class="form-group">
+                          <label for="date">Fecha:</label>
+                          <input type="date" id="date" required>
+                      </div>
+                       <div class="form-group">
+                          <label for="imageUrl">URL de la Imagen:</label>
+                           <input type="text" id="imageUrl" required>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Guardar Noticia</button>
+                   </form>
+            </section>
+            <section class="content">
+                <h2>Noticias Cargadas</h2>
+                <div id="news-list" class="blog-container">
+                  <!-- Aquí se mostrarán las noticias cargadas -->
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
-    <footer class="footer">
-          <div class="container">
+   <footer class="footer">
+         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
                     <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="80" height="80">
@@ -100,8 +100,7 @@
             </div>
         </div>
     </footer>
-
-     <div class="chat-button-container">
+      <div class="chat-button-container">
         <button id="chat-button" class="chat-button" aria-label="Abrir chat">
             <i class="fas fa-comments"></i>
             <span class="chat-button-text">Chat en vivo</span>
@@ -120,8 +119,7 @@
             </button>
         </div>
     </div>
-
-    <script src="js/admin.js"></script>
     <script src="js/script.js"></script>
+     <script type="module" src="admin.js"></script>
 </body>
 </html>

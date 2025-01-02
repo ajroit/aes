@@ -1,4 +1,3 @@
-// js/index.js
 const SUPABASE_URL = 'https://kiryiazblpcxflckkcmz.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpcnlpYXpibHBjeGZsY2trY216Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM5MjUzNzQsImV4cCI6MjA0OTUwMTM3NH0.kAuGhhAi2pHfuYBdPSug4HqfQftSSD0QYMqTbU0s0Gg';
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -45,6 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 const postElement = document.createElement('div');
                 postElement.classList.add('testimonial-item');
                 
+                 const readMoreLink = document.createElement('a');
+                 readMoreLink.href = `noticia-${post.id}.html?id=${post.id}`;
+                 readMoreLink.classList.add('read-more', 'btn', 'btn-primary');
+                 readMoreLink.textContent = 'Leer más';
+
                 postElement.innerHTML = `
                     <img src="${post.imageUrl}" alt="${post.title}" class="blog-image">
                     <h3 class="blog-title">${post.title}</h3>
@@ -52,9 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="blog-date">Fecha: ${post.date}</span>
                     </div>
                     <p class="blog-content">${post.content.substring(0, 200) + '...'}</p>
-                      <a href="noticia-${post.id}.html" class="read-more btn btn-primary">Leer más</a>
+                    
                 `;
-                
+                  postElement.appendChild(readMoreLink)
                 slider.appendChild(postElement);
             });
 
