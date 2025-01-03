@@ -1,47 +1,39 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // ------------------------------------------------------------
-    // Sección de Funcionalidad del Chat
-    // ------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
     const chatButton = document.getElementById('chat-button');
     const chatContainer = document.getElementById('chat-container');
-    const closeChatButton = document.getElementById('close-chat');
+    const closeChat = document.getElementById('close-chat');
     const chatContent = document.getElementById('chat-content');
     const chatInput = document.getElementById('chat-input');
-    const sendChatButton = document.getElementById('send-chat');
+    const sendChat = document.getElementById('send-chat');
+    let sessionId = localStorage.getItem('chatSessionId') || null;
 
-      let sessionId = localStorage.getItem('chatSessionId') || null;
-        if(!sessionId){
-          sessionId = crypto.randomUUID();
-           localStorage.setItem('chatSessionId', sessionId)
-        }
-      console.log('Session ID en la web: ', sessionId)
-
-
-    // Función para mostrar el chat
-    function openChat() {
-        chatContainer.style.display = 'flex';
+    if (!sessionId) {
+        sessionId = crypto.randomUUID();
+        localStorage.setItem('chatSessionId', sessionId);
     }
 
-    // Función para ocultar el chat
-    function closeChat() {
+    chatButton.addEventListener('click', function() {
+        window.open('chat.html', '_blank');
+    });
+
+    // Mantener la funcionalidad existente para el chat en la página principal
+    closeChat.addEventListener('click', function() {
         chatContainer.style.display = 'none';
-    }
+        chatButton.style.display = 'flex';
+    });
 
-     function updateChat(message, isBot = false) {
+    function updateChat(message, isBot = false) {
         const messageElement = document.createElement('div');
         messageElement.classList.add('chat-message');
-        messageElement.innerHTML = message; // Usa innerHTML para interpretar HTML
-
+        messageElement.innerHTML = message;
         if (isBot) {
             messageElement.classList.add('bot');
         } else {
             messageElement.classList.add('tú');
         }
-
         chatContent.appendChild(messageElement);
         chatContent.scrollTop = chatContent.scrollHeight;
     }
-
 
     async function sendMessage() {
         const message = chatInput.value.trim();
@@ -49,13 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             updateChat(message);
             chatInput.value = '';
             try {
-                // Aquí debes colocar la definición de backendURL y el fetch
-                const backendURL = 'https://chatbotpage.ajroit-wa.workers.dev/'; // Reemplaza con la URL de tu worker
-                console.log('URL de fetch:', backendURL); // Debug: Muestra la URL que se va a usar
-                console.log('sessionId:', sessionId);
-                console.log('Mensaje a enviar:', message);
-    
-                const response = await fetch(backendURL, { // usa la variable para la url
+                const backendURL = 'https://chatbotpage.ajroit-wa.workers.dev/';
+                const response = await fetch(backendURL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -63,30 +50,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     body: JSON.stringify({ message: message }),
                 });
-                console.log('Respuesta del fetch:', response); // Debug: Muestra el response
                 if (!response.ok) {
                     const errorData = await response.json();
                     console.error('Error del servidor:', errorData);
                     throw new Error(`Error en la solicitud al servidor: ${response.status} - ${errorData.error}`);
                 }
-    
                 const responseData = await response.json();
                 updateChat(responseData.botResponse, true);
-    
             } catch (error) {
                 console.error('Error al enviar el mensaje:', error);
                 updateChat('Hubo un error al procesar tu mensaje. Por favor, intenta de nuevo.', true);
             }
         }
     }
-    
-    // Evento para el botón de chat
-    chatButton.addEventListener('click', openChat);
 
-    // Evento para el botón de cerrar
-    closeChatButton.addEventListener('click', closeChat);
-
-    sendChatButton.addEventListener('click', sendMessage)
+    sendChat.addEventListener('click', sendMessage);
 
     chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -94,14 +72,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
-    // ------------------------------------------------------------
-    // Sección de Funcionalidad del Menu Mobile
-    // ------------------------------------------------------------
+    // Funcionalidad para el menú móvil
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mainNav = document.querySelector('.main-nav');
 
-    mobileMenuBtn.addEventListener('click', () => {
-        mainNav.classList.toggle('active'); // Toggle a class to show/hide menu
+    mobileMenuBtn.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
     });
+
+    // Funcionalidad para el carrusel de testimonios
+    const testimonialSlider = document.querySelector('.testimonial-slider');
+    const prevButton = document.querySelector('.carousel-control.prev');
+    const nextButton = document.querySelector('.carousel-control.next');
+
+    if (testimonialSlider && prevButton && nextButton) {
+        let currentIndex = 0;
+        const testimonials = testimonialSlider.children;
+        const totalTestimonials = testimonials.length;
+
+        function showTestimonial(index) {
+            testimonialSlider.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
+            showTestimonial(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalTestimonials;
+            showTestimonial(currentIndex);
+        });
+    }
 });
+

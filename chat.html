@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat en vivo - Abogados en Salud</title>
+    <link rel="stylesheet" href="css/chat-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-sidebar">
+            <div class="chat-sidebar-header">
+                <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" class="logo">
+                <h2>Abogados en Salud</h2>
+            </div>
+            <div class="chat-sidebar-content">
+                <p>Bienvenido a nuestro chat en vivo. Estamos aquí para responder sus preguntas sobre derechos en salud y brindarle asistencia legal especializada.</p>
+                <ul class="chat-features">
+                    <li><i class="fas fa-balance-scale"></i> Asesoría legal experta</li>
+                    <li><i class="fas fa-user-shield"></i> Confidencialidad garantizada</li>
+                    <li><i class="fas fa-clock"></i> Respuestas rápidas</li>
+                </ul>
+            </div>
+        </div>
+        <div class="chat-main">
+            <div class="chat-header">
+                <h1>Chat en vivo</h1>
+                <p>Consulte con nuestros especialistas</p>
+            </div>
+            <div id="chat-messages" class="chat-messages"></div>
+            <div class="chat-input-area">
+                <textarea id="chat-input" placeholder="Escriba su mensaje aquí..."></textarea>
+                <button id="send-chat" class="send-chat" aria-label="Enviar mensaje">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="js/chat.js"></script>
+</body>
+</html>
+
