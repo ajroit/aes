@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contacto - Abogados en Salud</title>
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/contact-style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-        <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Abogados en Salud</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init('yTeBiln5ZzwAtU-n3'); // Reemplaza con tu User ID de EmailJS
+        })();
+    </script>
+</head>
 <body>
     <header class="header">
         <div class="container">
@@ -123,42 +126,6 @@
     </footer>
 
     <script src="js/script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('contact-form');
-            const formMessage = document.getElementById('form-message');
-
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-
-                const formData = new FormData(form);
-
-                const templateParams = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    phone: formData.get('phone'),
-                    message: formData.get('message'),
-                };
-
-                try {
-                    const result = await emailjs.send('service_pqfm8mh', 'template_mvnwmlf', templateParams);
-                    formMessage.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto a la brevedad.';
-                    formMessage.className = 'form-message success';
-                    formMessage.style.display = 'block';
-                    form.reset();
-                } catch (error) {
-                    formMessage.textContent = 'Error al enviar el mensaje. Inténtalo de nuevo.';
-                    formMessage.className = 'form-message error';
-                    formMessage.style.display = 'block';
-                    console.error('Error al enviar el mensaje:', error);
-                }
-            });
-
-            const openChatButton = document.getElementById('open-chat');
-            openChatButton.addEventListener('click', function() {
-                window.open('chat.html', '_blank');
-            });
-        });
-    </script>
+    <script src="js/contacto.js"></script>
 </body>
 </html>
