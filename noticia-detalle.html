@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Noticia - Abogados en Salud</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/noticia.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="100" height="100">
+                <span class="logo-text">Abogados en Salud</span>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="amparos.html">Amparos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="derechos.html">Derechos de los Usuarios</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menú móvil">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <article class="noticia-container">
+            <header class="noticia-header">
+                <h1 id="noticia-titulo" class="noticia-titulo">Titulo</h1>
+                <div class="noticia-meta">
+                    <span id="noticia-fecha"><i class="far fa-calendar-alt"></i></span>
+                    <span id="noticia-autor"><i class="far fa-user"></i></span>
+                </div>
+            </header>
+            <img id="noticia-imagen" src="data:image/jpeg;base64,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" alt="" class="noticia-imagen">
+            <div id="noticia-contenido" class="noticia-contenido">
+                <p>En un reciente fallo, la justicia argentina le ordenó a una obra social que brindara un tratamiento especializado a una paciente con cáncer de colon, luego de que dicha obra social se negara a cubrirlo. Este caso pone de manifiesto el creciente rol del poder judicial en la defensa de los derechos de los pacientes ante las decisiones de las entidades de salud. El tribunal consideró que la negativa de la obra social a autorizar el tratamiento ponía en riesgo la vida de la paciente, por lo que dictó la medida para garantizar el acceso a la atención médica necesaria.</p>
+
+                <h2>La Defensa del Derecho a la Salud</h2>
+                
+                <p>Este fallo refuerza el derecho constitucional a la salud, establecido en la Constitución Nacional de Argentina, que asegura que todos los ciudadanos deben poder acceder a los tratamientos médicos necesarios, especialmente en casos de enfermedades graves como el cáncer. En este caso, la paciente había sido diagnosticada con una enfermedad de alto riesgo y los médicos habían prescripto un tratamiento especializado que la obra social se negó a cubrir. La decisión judicial no solo benefició a la paciente en particular, sino que también destacó la importancia de la protección judicial ante la negativa de las obras sociales a cubrir tratamientos vitales.</p>
+
+                <h2>Un Precedente Importante para el Sistema de Salud</h2>
+                
+                <p>El fallo judicial marca un precedente relevante para el sistema de salud y las obras sociales en Argentina. A medida que aumentan los casos en los que las aseguradoras de salud rechazan tratamientos de alto costo o especializados, la intervención del poder judicial se ha vuelto crucial para garantizar que los pacientes reciban la atención adecuada. Este tipo de decisiones tiene un impacto directo en el funcionamiento de las obras sociales, que deben cumplir con los estándares establecidos por la justicia, priorizando la salud de los pacientes sobre los intereses económicos. Sin duda, este tipo de fallos contribuye a generar una mayor conciencia sobre la necesidad de una cobertura de salud accesible y de calidad para todos.</p>
+            </div>
+            <div class="noticia-compartir">
+                <h3>Compartir esta noticia</h3>
+                <div class="compartir-botones">
+                    <a href="#" class="compartir-boton facebook" aria-label="Compartir en Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="compartir-boton twitter" aria-label="Compartir en Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="compartir-boton linkedin" aria-label="Compartir en LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="compartir-boton whatsapp" aria-label="Compartir en WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="80" height="80">
+                    <p>© 2024 Abogados en Salud. Todos los derechos reservados.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="amparos.html">Amparos</a></li>
+                        <li><a href="derechos.html">Derechos de los Usuarios</a></li>
+                        <li><a href="noticias.html">Publicaciones</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="chat-button-container">
+        <button id="chat-button" class="chat-button" aria-label="Abrir chat">
+            <i class="fas fa-comments"></i>
+            <span class="chat-button-text">Chat en vivo</span>
+        </button>
+    </div>
+    <div id="chat-container" class="chat-container">
+        <div id="chat-header" class="chat-header">
+            <span>Chat en vivo</span>
+            <button id="close-chat" class="close-chat" aria-label="Cerrar chat">×</button>
+        </div>
+        <div id="chat-content" class="chat-content"></div>
+        <div id="chat-input-container" class="chat-input-container">
+            <input id="chat-input" type="text" placeholder="Escribe un mensaje...">
+            <button id="send-chat" class="send-chat" aria-label="Enviar mensaje">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/noticia-detalle.js"></script>
+</body>
+</html>
+

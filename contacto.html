@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contacto - Abogados en Salud</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/contact-style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+        <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    </head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="100" height="100">
+                <span class="logo-text">Abogados en Salud</span>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="amparos.html">Amparos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="derechos.html">Derechos de los Usuarios</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menú móvil">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Contáctanos</h1>
+                <p>Estamos aquí para ayudarte. ¡No dudes en contactarnos!</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-form-container">
+                        <h2>Envíanos un Mensaje</h2>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Nombre:</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Teléfono:</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensaje:</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                            </div>
+                        </form>
+                        <div id="form-message" class="form-message" style="display: none;"></div>
+                    </div>
+                    <div class="contact-info-container">
+                        <div class="chat-box" id="open-chat">
+                            <h3>Chat en Vivo</h3>
+                            <p>Haz clic aquí para iniciar una conversación con nuestros especialistas.</p>
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="social-links">
+                            <div class="social-icons">
+                                <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                <a href="mailto:your@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="80" height="80">
+                    <p>© 2024 Abogados en Salud. Todos los derechos reservados.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="amparos.html">Amparos</a></li>
+                        <li><a href="derechos.html">Derechos de los Usuarios</a></li>
+                        <li><a href="noticias.html">Noticias</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+
+                const templateParams = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    message: formData.get('message'),
+                };
+
+                try {
+                    const result = await emailjs.send('service_pqfm8mh', 'template_mvnwmlf', templateParams);
+                    formMessage.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto a la brevedad.';
+                    formMessage.className = 'form-message success';
+                    formMessage.style.display = 'block';
+                    form.reset();
+                } catch (error) {
+                    formMessage.textContent = 'Error al enviar el mensaje. Inténtalo de nuevo.';
+                    formMessage.className = 'form-message error';
+                    formMessage.style.display = 'block';
+                    console.error('Error al enviar el mensaje:', error);
+                }
+            });
+
+            const openChatButton = document.getElementById('open-chat');
+            openChatButton.addEventListener('click', function() {
+                window.open('chat.html', '_blank');
+            });
+        });
+    </script>
+</body>
+</html>

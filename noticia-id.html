@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticia - Abogados en Salud</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+           <a href="../index.html" class="logo">
+                <img src="../IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="100" height="100">
+                <span class="logo-text">Abogados en Salud</span>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="amparos.html">Amparos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="derechos.html">Derechos de los Usuarios</a></li>
+                      <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menú móvil">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 id="news-title"></h1>
+                <p id="news-subtitle"></p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <article class="blog-post full-post">
+                    <img id="news-image" src="" alt="Imagen de la Noticia" class="blog-image">
+                    <div class="blog-meta">
+                        <span id="news-date" class="blog-date"></span>
+                    </div>
+                    <div id="news-content" class="blog-content">
+
+                       </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <img src="../IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="80" height="80">
+                    <p>© 2024 Abogados en Salud. Todos los derechos reservados.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="../amparos.html">Amparos</a></li>
+                        <li><a href="../derechos.html">Derechos de los Usuarios</a></li>
+                        <li><a href="../noticias.html">Publicaciones</a></li>
+                        <li><a href="../contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="chat-button-container">
+        <button id="chat-button" class="chat-button" aria-label="Abrir chat">
+            <i class="fas fa-comments"></i>
+            <span class="chat-button-text">Chat en vivo</span>
+        </button>
+    </div>
+    <div id="chat-container" class="chat-container">
+        <div id="chat-header" class="chat-header">
+            <span>Chat en vivo</span>
+            <button id="close-chat" class="close-chat" aria-label="Cerrar chat">×</button>
+        </div>
+        <div id="chat-content" class="chat-content"></div>
+        <div id="chat-input-container" class="chat-input-container">
+            <input id="chat-input" type="text" placeholder="Escribe un mensaje...">
+            <button id="send-chat" class="send-chat" aria-label="Enviar mensaje">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+     <script>
+        const SUPABASE_URL = 'https://kiryiazblpcxflckkcmz.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpcnlpYXpibHBjeGZsY2trY216Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM5MjUzNzQsImV4cCI6MjA0OTUwMTM3NH0.kAuGhhAi2pHfuYBdPSug4HqfQftSSD0QYMqTbU0s0Gg';
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const newsId = window.location.pathname.match(/noticia-(\w+)\.html/)[1];
+
+            if (newsId) {
+               try {
+                    const { data, error } = await supabase
+                         .from('news')
+                         .select('*')
+                         .eq('id', newsId)
+                         .single();
+
+                    if (error) {
+                         console.error("Error fetching data", error);
+                         document.getElementById('news-title').textContent = 'Error al cargar la noticia';
+                         return;
+                     }
+                      document.getElementById('news-title').textContent = data.title;
+                     document.getElementById('news-subtitle').textContent = data.content.substring(0,100) + '...';
+                     document.getElementById('news-date').textContent = 'Fecha: ' + data.date;
+                     document.getElementById('news-image').src = data.imageUrl;
+                     document.getElementById('news-image').alt = data.title;
+                    document.getElementById('news-content').innerHTML = data.content;
+
+
+                   } catch (error) {
+                        console.error("Error:", error);
+                         document.getElementById('news-title').textContent = 'Error al cargar la noticia';
+                     }
+
+            } else {
+               document.getElementById('news-title').textContent = 'No se encontró la noticia';
+             }
+        });
+    </script>
+</body>
+</html>

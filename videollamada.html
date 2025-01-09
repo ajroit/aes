@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videollamada - Abogados en Salud</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script src='https://meet.jit.si/external_api.js'></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="100" height="100">
+                <span class="logo-text">Abogados en Salud</span>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="amparos.html">Amparos</a></li>
+                    <li><a href="derechos.html">Derechos de los Usuarios</a></li>
+                    <li><a href="publicaciones.html">Publicaciones</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menú móvil">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Videollamada</h1>
+                <p>Únete a nuestra sala virtual para una consulta personalizada</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <div id="jitsi-meet-container" class="video-container"></div>
+                <div class="video-instructions">
+                    <h2>Instrucciones para la videollamada</h2>
+                    <ol>
+                        <li>Asegúrate de tener una conexión estable a internet.</li>
+                        <li>Permite el acceso a tu cámara y micrófono cuando el navegador lo solicite.</li>
+                        <li>Ajusta tu cámara para que se te vea claramente.</li>
+                        <li>Utiliza auriculares para mejorar la calidad del audio.</li>
+                        <li>Si experimentas problemas técnicos, intenta refrescar la página.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="80" height="80">
+                    <p>© 2024 Abogados en Salud. Todos los derechos reservados.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="amparos.html">Amparos</a></li>
+                        <li><a href="derechos.html">Derechos de los Usuarios</a></li>
+                        <li><a href="publicaciones.html">Publicaciones</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="chat-button-container">
+        <button id="chat-button" class="chat-button" aria-label="Abrir chat">
+            <i class="fas fa-comments"></i>
+            <span class="chat-button-text">Chat en vivo</span>
+        </button>
+    </div>
+    <div id="chat-container" class="chat-container">
+        <div id="chat-header" class="chat-header">
+            <span>Chat en vivo</span>
+            <button id="close-chat" class="close-chat" aria-label="Cerrar chat">&times;</button>
+        </div>
+        <div id="chat-content" class="chat-content"></div>
+        <div id="chat-input-container" class="chat-input-container">
+            <input id="chat-input" type="text" placeholder="Escribe un mensaje...">
+            <button id="send-chat" class="send-chat" aria-label="Enviar mensaje">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const domain = "meet.jit.si";
+        const options = {
+            roomName: "AbogadosEnSaludConsulta",
+            width: '100%',
+            height: 600,
+            parentNode: document.querySelector('#jitsi-meet-container'),
+            interfaceConfigOverwrite: {
+                TOOLBAR_BUTTONS: [
+                    'microphone', 'camera', 'closedcaptions', 'desktop', 'fullscreen',
+                    'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
+                    'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
+                    'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts',
+                    'tileview', 'videobackgroundblur', 'download', 'help', 'mute-everyone',
+                    'e2ee'
+                ],
+            }
+        };
+        const api = new JitsiMeetExternalAPI(domain, options);
+    });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de Noticias</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="IMG/nombre.jpeg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+      <div class="container">
+            <a href="index.html" class="logo">
+                <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="100" height="100">
+                <span class="logo-text">Abogados en Salud</span>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="amparos.html">Amparos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="derechos.html">Derechos de los Usuarios</a></li>
+                      <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menú móvil">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+         <section class="page-header">
+            <div class="container">
+                <h1>Administrador de Noticias</h1>
+                <p>Carga y gestiona las noticias de tu sitio web</p>
+            </div>
+        </section>
+        <div class="container">
+
+            <section class="content">
+                   <form id="news-form" class="contact-form">
+                      <h2>Cargar Nueva Noticia</h2>
+                      <div class="form-group">
+                          <label for="title">Título:</label>
+                          <input type="text" id="title" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="content">Contenido:</label>
+                          <textarea id="content" rows="5" required></textarea>
+                      </div>
+                       <div class="form-group">
+                          <label for="date">Fecha:</label>
+                          <input type="date" id="date" required>
+                      </div>
+                       <div class="form-group">
+                          <label for="imageUrl">URL de la Imagen:</label>
+                           <input type="text" id="imageUrl" required>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Guardar Noticia</button>
+                   </form>
+            </section>
+            <section class="content">
+                <h2>Noticias Cargadas</h2>
+                <div id="news-list" class="blog-container">
+                  <!-- Aquí se mostrarán las noticias cargadas -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+   <footer class="footer">
+         <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <img src="IMG/nombre.jpeg" alt="Logo Abogados en Salud" width="80" height="80">
+                    <p>© 2024 Abogados en Salud. Todos los derechos reservados.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="amparos.html">Amparos</a></li>
+                        <li><a href="derechos.html">Derechos de los Usuarios</a></li>
+                        <li><a href="noticias.html">Publicaciones</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+      <div class="chat-button-container">
+        <button id="chat-button" class="chat-button" aria-label="Abrir chat">
+            <i class="fas fa-comments"></i>
+            <span class="chat-button-text">Chat en vivo</span>
+        </button>
+    </div>
+    <div id="chat-container" class="chat-container">
+        <div id="chat-header" class="chat-header">
+            <span>Chat en vivo</span>
+            <button id="close-chat" class="close-chat" aria-label="Cerrar chat">×</button>
+        </div>
+        <div id="chat-content" class="chat-content"></div>
+        <div id="chat-input-container" class="chat-input-container">
+            <input id="chat-input" type="text" placeholder="Escribe un mensaje...">
+            <button id="send-chat" class="send-chat" aria-label="Enviar mensaje">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
