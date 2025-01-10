@@ -143,6 +143,9 @@
 }
 
 /* Mejoras para el botón de chat */
+/* ... (tus estilos existentes) ... */
+
+/* Mejoras para el botón de chat */
 /* Estilos del chat */
 .chat-content {
     flex: 1;
@@ -220,9 +223,49 @@
     line-height: 1;
 }
 
+
+/* WhatsApp Button */
+.whatsapp-button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: block; /* Ensure it's always visible */
+}
+
+.whatsapp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25d366;
+    color: var(--light-text-color);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 2.5rem; /* Tamaño del icono */
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    padding: 0; /* Eliminar padding para centrar el ícono */
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.05);
+}
+
+
+.whatsapp-button i {
+     font-size: 2rem; /* Tamaño del icono ajustado para mejor visualización */
+}
+
+
 .chat-button-text {
     display: none; /* Ocultamos el texto en todos los tamaños */
 }
+
+/* ... (tus estilos existentes) ... */
 
 :root {
     --primary-color: #36789a; /* Azul del logo */
@@ -895,6 +938,7 @@ body {
 .amparo-text {
     flex: 1;
     padding: 30px;
+    text-align: justify;
 }
 
 .amparo-image {
@@ -920,11 +964,13 @@ body {
 .amparo-text p, .amparo-text ul {
     color: var(--text-color);
     line-height: 1.6;
+    text-align: justify;
 }
 
 .amparo-text ul {
     padding-left: 20px;
     margin-top: 15px;
+    text-align: justify;
 }
 
 .amparo-text li {
@@ -942,6 +988,8 @@ body {
 
     .amparo-text, .amparo-image {
         padding: 20px;
+        text-align: justify;
+
     }
 }
 
