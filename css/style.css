@@ -811,12 +811,14 @@ body {
     .main-nav {
         width: 100%;
         display: none;
-    }
+   }
 
-    .main-nav.active {
-        display: block;
-    }
-
+   @media (max-width: 768px) {
+      .main-nav.active {
+       display: block;
+      }
+   }
+   
     .main-nav .nav-list {
         flex-direction: column;
     }
