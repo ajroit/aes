@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-
     // Funcionalidad para el menú móvil
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mainNav = document.querySelector('.main-nav');
@@ -8,6 +7,4 @@ document.addEventListener('DOMContentLoaded', function() {
     mobileMenuBtn.addEventListener('click', function() {
         mainNav.classList.toggle('active');
     });
-
-
 });
