@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 } else {
                     console.log('Datos guardados exitosamente:', data);
-                    formMessage.textContent = 'Mensaje enviado con éxito!';
+                    formMessage.textContent = 'Su mensaje se ha enviado con éxito. Pronto será contactado por un abogado en salud';
                     formMessage.className = 'form-message success';
                     formMessage.style.display = 'block';
                     form.reset();
